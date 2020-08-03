@@ -3,7 +3,7 @@ const router = require("express").Router();
 const fs = require('fs');
 var request = require('request');
 var azure = require('azure-storage');
-var tableService = azure.createTableService('462sensordata', 'EHFyzv0GPoQjOsSQYx68X6nyw96TM4F6yU7k6ijy6aPhJfn2zIHGmAhdPIGeKHdFPlvCesswCb1MQKbYr6YtaQ==');
+var tableService = azure.createTableService('200storageacc', 'PCveFZtRQCUfddJpn/YZz5sICBGPtmmruHVOsuZR2N48Rq2v9LY3saFAyT18gk06nHsAEg9P4/QNN1jigd4p3A==');
 
 
 router.get("/getData", (req, res) => {
@@ -18,7 +18,7 @@ router.get("/getData", (req, res) => {
     .top(1)
     .where('Timestamp ge ?', new Date(lasttime));
 
-    tableService.queryEntities('livedata', query, null, function(error, result, response) {
+    tableService.queryEntities('livedataTable', query, null, function(error, result, response) {
       if (!error) {
         console.log(result.entries, n)
 
